@@ -25,10 +25,13 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		moveVector.x = Input.GetAxis (x) * speed;
-		moveVector.y = Input.GetAxis (y) * speed * -1;
-		moveVector.z = 0f;
 
-		r.velocity = moveVector;
+		if (! GetComponent<PlayerController> ().isAttacking ()) {
+			moveVector.x = Input.GetAxis (x) * speed;
+			moveVector.y = Input.GetAxis (y) * speed * -1;
+			moveVector.z = 0f;
+			
+			r.velocity = moveVector;
+		}
 	}
 }

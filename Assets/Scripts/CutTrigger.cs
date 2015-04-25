@@ -16,9 +16,9 @@ public class CutTrigger : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D (Collider2D collider){
-		GameObject trimmedGrass;
-		if (collider.tag == "sword") {
-			trimmedGrass = (GameObject) Instantiate (trimmedGrassPrefab);
+		if (collider.tag == "Sword") {
+			Instantiate (trimmedGrassPrefab, transform.position, new Quaternion());
+			Destroy (gameObject);
 		}
 	}
 }
