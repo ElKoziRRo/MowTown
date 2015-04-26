@@ -23,7 +23,6 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-
 		Attack ();
 
 		if (Mathf.Abs(r.velocity.x) > Mathf.Abs(r.velocity.y)) {

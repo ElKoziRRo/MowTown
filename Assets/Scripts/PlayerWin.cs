@@ -5,24 +5,38 @@ using System.Collections;
 public class PlayerWin : MonoBehaviour {
 
 	public Text winMessage;
-	public string p1YardName = "Grass1";
-	public string p2YardName = "Grass2";
+	public float restartTime;
 
 	private bool gameEnd = false;
+	private float timeUntilRestart;
 	private GameObject[] p1Yard;
 	private GameObject[] p2Yard;
 
 	// Use this for initialization
 	void Start () {
+		timeUntilRestart = restartTime;
 		winMessage.gameObject.SetActive(false);
 		winMessage.text = "";
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		p1Yard = GameObject.FindGameObjectsWithTag (p1YardName);
-		p2Yard = GameObject.FindGameObjectsWithTag (p2YardName);
 
+		p1Yard = GameObject.FindGameObjectsWithTag ("Grass1");
+		p2Yard = GameObject.FindGameObjectsWithTag ("Grass2");
+
+		if (gameEnd) {
+			timeUntilRestart -= Time.deltaTime;
+			if (timeUntilRestart <= 0) {
+				ClearLevel();
+				GetComponent<LevelController>().PrepareLevel();
+				timeUntilRestart = restartTime;
+				winMessage.gameObject.SetActive(false);
+				gameEnd = false;
+			}
+			return;
+		}
+		
 		// Dev Build Only!
 		QuickClear ();
 		// ------------------------------------
@@ -66,6 +80,16 @@ public class PlayerWin : MonoBehaviour {
 
 	void EndGame() {
 		EndGame ("");
+	}
+
+	void ClearLevel(){
+		GameObject[] trimmed = GameObject.FindGameObjectsWithTag("Trimmed");
+		foreach(GameObject grass in trimmed)
+			Destroy (grass);
+		foreach(GameObject grass in p1Yard)
+			Destroy(grass);
+		foreach(GameObject grass in p2Yard)
+			Destroy(grass);
 	}
 
 	public bool GameOver(){
