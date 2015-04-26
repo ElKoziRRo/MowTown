@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
 	public string x;
 	public string a;
 	public AudioClip[] swingClips;
+
 	private Rigidbody2D r;
 	private bool attacking = false;
 	private float attackTime;

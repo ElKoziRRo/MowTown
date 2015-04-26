@@ -49,6 +49,8 @@
      <Compile Include="Assets\Scripts\BushCutTrigger.cs" />
      <Compile Include="Assets\Scripts\CutTrigger.cs" />
      <Compile Include="Assets\Scripts\DestroyGrassplosion.cs" />
+     <Compile Include="Assets\Scripts\FertilizerPickup.cs" />
+     <Compile Include="Assets\Scripts\FertilizerSpawner.cs" />
      <Compile Include="Assets\Scripts\LevelController.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
