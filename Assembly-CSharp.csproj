@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\BushCutTrigger.cs" />
+     <Compile Include="Assets\Scripts\CameraStuff.cs" />
      <Compile Include="Assets\Scripts\CutTrigger.cs" />
      <Compile Include="Assets\Scripts\DestroyGrassplosion.cs" />
      <Compile Include="Assets\Scripts\FertilizerPickup.cs" />
