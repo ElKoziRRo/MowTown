@@ -24,9 +24,14 @@ public class CutTrigger : MonoBehaviour {
 	}
 
 	public void Cut(){
+		GameObject trimmed;
 		AudioSource.PlayClipAtPoint(cutClips[Random.Range (0 ,cutClips.Length)], transform.position);
-		Instantiate (trimmedGrassPrefab, transform.position, new Quaternion());
+		trimmed = (GameObject) Instantiate (trimmedGrassPrefab, transform.position, new Quaternion());
 		Instantiate (grassBladesPrefab, transform.position, new Quaternion(180, 0, 0, 1) );
+		if (tag == "Grass1")
+			trimmed.tag = "Trimmed1";
+		else
+			trimmed.tag = "Trimmed2";
 		Destroy (gameObject);
 	}
 }

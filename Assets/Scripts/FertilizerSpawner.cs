@@ -25,12 +25,22 @@ public class FertilizerSpawner : MonoBehaviour {
 		if (timeUntilSpawn <= 0) {
 			fertilizer = (GameObject) Instantiate(fertPrefab, transform.position, new Quaternion());
 			if (name == "Fertilizer Spawn 1")
-				fertilizer.name = "Fertilizer 1";
+				fertilizer.tag = "Fertilizer1";
 			else // Spawn 2
-				fertilizer.name = "Fertilizer 2";
+				fertilizer.tag = "Fertilizer2";
 
 			fertAvailable = true;
 			timeUntilSpawn = fertSpawnTime;
 		}
 	}
+
+	void OnTriggerEnter2D (Collider2D collider){
+		if (fertAvailable && collider.tag == "Player") {
+			fertAvailable = false;
+
+		}
+	}
+
+
+
 }

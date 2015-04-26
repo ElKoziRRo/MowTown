@@ -5,6 +5,7 @@ public class Regrowth : MonoBehaviour {
 
 	public GameObject grownPrefab;
 	public float growTime;
+	public float fertilizeGrowTime;
 
 	private GameObject GM;
 	private float timeUntilGrown;
@@ -23,6 +24,12 @@ public class Regrowth : MonoBehaviour {
 		timeUntilGrown -= Time.deltaTime;
 		if (timeUntilGrown <= 0) {
 			Grow();
+		}
+	}
+
+	void OnTriggerEnter2D( Collider2D collider) {
+		if( (collider.tag == "Fertilizer1" && tag == "Trimmed2") || (collider.tag == "Fertilizer2" && tag == "Trimmed1") ){
+			timeUntilGrown = fertilizeGrowTime;
 		}
 	}
 

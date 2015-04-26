@@ -15,10 +15,12 @@ public class PlayerController : MonoBehaviour {
 	private float attackTime;
 	private Animator _animator;
 	private bool _facingLeft;
+	private bool _carryingFert;
 	
 	// Use this for initialization
 	void Start () {
 		_facingLeft = true;
+		_carryingFert = false;
 		_animator = GetComponent<Animator> ();
 		attackTime = attackCooldown;
 		r = GetComponent<Rigidbody2D> ();
@@ -112,6 +114,20 @@ public class PlayerController : MonoBehaviour {
 	
 	public bool isAttacking(){
 		return attacking;
+	}
+
+	public bool isCarrying(){
+		return _carryingFert;
+	}
+
+	public void PickupFert() {
+		_carryingFert = true;
+	}
+
+	public void ThrowFert() {
+		_carryingFert = false;
+		GetComponentInChildren<AerialFertilizer> ().Fly ();
+
 	}
 	
 }

@@ -15,8 +15,9 @@ public class FertilizerPickup : MonoBehaviour {
 
 	void OnTriggerEnter2D ( Collider2D collider) {
 		if (collider.tag == "Player") {
-			transform.position = collider.transform.position;
+			transform.position = new Vector3(collider.transform.position.x, collider.transform.position.y + 0.32f, 0);
 			transform.parent = collider.transform;
+			GetComponentInParent<PlayerController>().PickupFert();
 		}
 	}
 }

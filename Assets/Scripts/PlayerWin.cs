@@ -83,8 +83,11 @@ public class PlayerWin : MonoBehaviour {
 	}
 
 	void ClearLevel(){
-		GameObject[] trimmed = GameObject.FindGameObjectsWithTag("Trimmed");
-		foreach(GameObject grass in trimmed)
+		GameObject[] trimmed1 = GameObject.FindGameObjectsWithTag("Trimmed1");
+		GameObject[] trimmed2 = GameObject.FindGameObjectsWithTag("Trimmed2");
+		foreach(GameObject grass in trimmed1)
+			Destroy (grass);
+		foreach(GameObject grass in trimmed2)
 			Destroy (grass);
 		foreach(GameObject grass in p1Yard)
 			Destroy(grass);
