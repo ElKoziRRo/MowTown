@@ -11,11 +11,10 @@ public class PlayerMovement : MonoBehaviour {
 	private string x;
 	private string y;
 
-	
+
 	// Use this for initialization
 	void Start () {
 		GM = GameObject.FindGameObjectWithTag ("GameController");
-
 		r = GetComponent<Rigidbody2D>();
 		if (name == "P1") {
 			x = "LeftStickX1";
@@ -40,7 +39,7 @@ public class PlayerMovement : MonoBehaviour {
 			moveVector.x = Input.GetAxis (x) * speed;
 			moveVector.y = Input.GetAxis (y) * speed * -1;
 			moveVector.z = 0f;
-			
+
 			r.velocity = moveVector;
 		}
 	}
