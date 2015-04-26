@@ -5,10 +5,10 @@ public class PlayerController : MonoBehaviour {
 
 	public GameObject sword;
 	public float attackCooldown;
+	public string x;
+	public string a;
 
 	private Rigidbody2D r;
-	private string x;
-	private string a;
 	private bool attacking = false;
 	private float attackTime;
 
@@ -18,19 +18,11 @@ public class PlayerController : MonoBehaviour {
 		r = GetComponent<Rigidbody2D> ();
 		sword.transform.position = new Vector3 (sword.transform.parent.transform.position.x, 
 		                                        sword.transform.parent.transform.position.y - 0.32f);
-
-		// Attack button setup
-		if (name == "P1") {
-			x = "X1";
-			a = "A1";
-		}else { //P2 
-			x = "X2";
-			a = "A2";
-		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
 
 		Attack ();
 
@@ -54,7 +46,7 @@ public class PlayerController : MonoBehaviour {
 
 	void Attack(){
 		if (!attacking) {
-			if (Input.GetButtonDown (x) || Input.GetButtonDown (a)) {
+			if (Input.GetButtonDown (a) || Input.GetButtonDown (x)) {
 				attacking = true;
 				sword.SetActive(true);
 				r.velocity = new Vector3();
