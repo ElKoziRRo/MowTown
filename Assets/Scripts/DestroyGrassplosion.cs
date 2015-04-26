@@ -4,7 +4,7 @@ using System.Collections;
 public class DestroyGrassplosion : MonoBehaviour {
 
 	private ParticleSystem leaves;
-	public float lifetime = 1;
+	public float lifetime;
 
 	// Use this for initialization
 	void Start () {
@@ -19,6 +19,6 @@ public class DestroyGrassplosion : MonoBehaviour {
 	}
 
 	void Stop() {
-		Destroy (gameObject, leaves.duration);
+		Destroy (gameObject);
 	}
 }
