@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour {
 	public string x;
 	public string a;
 	public AudioClip[] swingClips;
+	public AudioClip[] grassfootclips;
+	public AudioClip[] throwclips;
 
 	private Rigidbody2D r;
 	private bool attacking = false;
@@ -87,6 +89,9 @@ public class PlayerController : MonoBehaviour {
 	
 	}
 
+	void FootSteps() {
+		AudioSource.PlayClipAtPoint(grassfootclips[Random.Range (0 ,grassfootclips.Length)], r.position);
+	}
 	void Flip(){
 		_facingLeft = !_facingLeft;
 
@@ -126,7 +131,13 @@ public class PlayerController : MonoBehaviour {
 
 	public void ThrowFert() {
 		_carryingFert = false;
-		GetComponentInChildren<AerialFertilizer> ().Fly ();
+		AudioSource.PlayClipAtPoint(throwclips[Random.Range (0 ,throwclips.Length)], r.position);
+		AerialFertilizer fert = GetComponentInChildren<AerialFertilizer> ();
+		if(fert != null) 
+		{
+			GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraStuff>().ScreenShake();
+			fert.Fly ();
+		}
 
 	}
 	
